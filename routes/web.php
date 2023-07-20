@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\MainController;
+use App\Http\Controllers\RolesController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,9 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [MainController::class, 'index']);
 
-Route::post('/', [MainController::class, 'testPost']);
+Route::get('create', [RolesController::class, 'create']);
+Route::get('index', [RolesController::class, 'index']);
 
 
-Route::put('/', [MainController::class, 'testPut']);
-
-//Route::any('/', [MainController::class, 'testAny']);
