@@ -41,6 +41,16 @@ class RolesController extends Controller
 //        ]);
 //        return Role::find(3);
 
-        Role::find(3)->delete();
+//        Role::find(3)->delete();
+    }
+
+    public function show(Role $role)
+    {
+//        $role = Role::find($roleId);
+//        return response()->json(['data' => $role]);
+
+
+
+        return response()->json(['data' => $role]);
     }
 }

@@ -21,3 +21,6 @@ Route::get('create', [RolesController::class, 'create']);
 Route::get('index', [RolesController::class, 'index']);
 
 
+Route::get('roles/{role}', [RolesController::class, 'show']);
+
+
