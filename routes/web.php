@@ -21,4 +21,4 @@ Route::post('/', [MainController::class, 'testPost']);
 
 Route::put('/', [MainController::class, 'testPut']);
 
-Route::any('/', [MainController::class, 'testAny']);
+//Route::any('/', [MainController::class, 'testAny']);

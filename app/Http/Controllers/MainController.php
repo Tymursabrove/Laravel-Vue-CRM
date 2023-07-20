@@ -18,9 +18,9 @@ class MainController extends Controller
     {
         return response()->json(['put' => 'ok']) ;
     }
-    public function testAny()
-    {
-        return response()->json(['any_method' => 'ok']) ;
-    }
+//    public function testAny()
+//    {
+//        return response()->json(['any_method' => 'ok']) ;
+//    }
 
 }
