@@ -23,5 +23,6 @@ Route::get('index', [RolesController::class, 'index']);
 
 
 Route::get('roles/{role}', [RolesController::class, 'show']);
+Route::get('roles/{role}/users', [RolesController::class, 'users']);
 
 
