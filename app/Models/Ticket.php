@@ -11,4 +11,10 @@ class Ticket extends Model
 
     protected $table = 'tickets';
     protected $guarded = false;
+
+
+    public function isNew()
+    {
+        return $this->status === 0;
+    }
 }
