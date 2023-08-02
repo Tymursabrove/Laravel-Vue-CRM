@@ -19,7 +19,7 @@ class RolesSeeder extends Seeder
             ['name' => 'Admin'],
             ['name' => 'Client'],
             ['name' => 'Manager'],
-            ['name' => 'Main-Nanager'],
+            ['name' => 'Main-Manager'],
         ];
         foreach ($roles as $role) {
             $role['created_at'] = Carbon::now();
