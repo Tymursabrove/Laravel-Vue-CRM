@@ -3,8 +3,8 @@
         <h1>
             {{ title }}
         </h1>
-        <User v-for="(user, index) in users" :user="user" text="some text........."
-        v-bind:key="index"></User>
+        <user-card v-for="(user, index) in users" :user="user" text="some text........."
+        v-bind:key="index"></user-card>
     </div>
 </template>
 
@@ -15,7 +15,7 @@ import User from "./users/User.vue";
 export default {
     name: "Home",
     components: {
-        User
+        'user-card': User,
     },
 
     data() {
@@ -23,16 +23,29 @@ export default {
             title: 'CRM Helpdesc',
             users: [
                 {
-                    name: 'Alex',
-                    last_name: 'Davydov'
+                    name: 'Rinat',
+                    last_name: 'Sarmuldin',
+                    role: 'admin'
                 },
                 {
                     name: 'Alina',
-                    last_name: 'Firsova'
+                    last_name: 'Firsova',
+                    role: 'manager'
                 },
                 {
                     name: 'Tima',
-                    last_name: 'Folts'
+                    last_name: 'Folts',
+                    role: 'client'
+                },
+                {
+                    name: 'Fedor',
+                    last_name: 'Bolotov',
+                    role: 'client'
+                },
+                {
+                    name: 'Misha',
+                    last_name: 'Dedyrenko',
+                    role: 'manager'
                 },
             ],
             name: null,
