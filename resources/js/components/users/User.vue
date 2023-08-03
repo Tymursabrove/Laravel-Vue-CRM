@@ -8,6 +8,8 @@
         <template v-else>
             <p>{{user.role}}</p>
         </template>
+        <router-link :to="'/users/'  + user.name">User's page</router-link>
+        {{user.name}}>
     </div>
 </template>
 
