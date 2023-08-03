@@ -3,32 +3,38 @@
         <h1>
             {{ title }}
         </h1>
-        <input type="text" v-model="title">
-        <ul>
-            <li v-for="user in users">{{ user }}</li>
-        </ul>
-        <input type="text" v-model="name">
-        <button type="button" @click="addUser">Add</button>
-        <div>
-            <h2>{{ user.name }}</h2>
-            <h2>{{ user.last_name }}</h2>
-        </div>
+        <User v-for="(user, index) in users" :user="user" text="some text........."
+        v-bind:key="index"></User>
     </div>
 </template>
 
 
 <script>
+import User from "./users/User.vue";
+
 export default {
     name: "Home",
+    components: {
+        User
+    },
 
     data() {
         return {
             title: 'CRM Helpdesc',
-            users: ['Alex', 'Alina', 'Tima'],
-            user: {
-                name: 'First name',
-                last_name: 'last name',
-            },
+            users: [
+                {
+                    name: 'Alex',
+                    last_name: 'Davydov'
+                },
+                {
+                    name: 'Alina',
+                    last_name: 'Firsova'
+                },
+                {
+                    name: 'Tima',
+                    last_name: 'Folts'
+                },
+            ],
             name: null,
         }
     },
