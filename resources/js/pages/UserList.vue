@@ -21,47 +21,15 @@ export default {
     data() {
         return {
             title: 'CRM Helpdesc',
-            users: [
-                {
-                    name: 'Rinat',
-                    last_name: 'Sarmuldin',
-                    role: 'admin'
-                },
-                {
-                    name: 'Alina',
-                    last_name: 'Firsova',
-                    role: 'manager'
-                },
-                {
-                    name: 'Tima',
-                    last_name: 'Folts',
-                    role: 'client'
-                },
-                {
-                    name: 'Fedor',
-                    last_name: 'Bolotov',
-                    role: 'client'
-                },
-                {
-                    name: 'Misha',
-                    last_name: 'Dedyrenko',
-                    role: 'manager'
-                },
-            ],
-            name: null,
+            users: [],
         }
     },
-    methods: {
-        addUser() {
-            this.users.push(this.name);
-            this.clearName();
-        },
-        clearName() {
-            this.name = null;
-        },
+    mounted() {
+        axios.get('/users').then(result => {
+            this.users = result.data;
+        });
     },
 }
-
 </script>
 
 <style scoped>

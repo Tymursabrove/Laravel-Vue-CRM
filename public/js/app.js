@@ -4878,38 +4878,14 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       title: 'CRM Helpdesc',
-      users: [{
-        name: 'Rinat',
-        last_name: 'Sarmuldin',
-        role: 'admin'
-      }, {
-        name: 'Alina',
-        last_name: 'Firsova',
-        role: 'manager'
-      }, {
-        name: 'Tima',
-        last_name: 'Folts',
-        role: 'client'
-      }, {
-        name: 'Fedor',
-        last_name: 'Bolotov',
-        role: 'client'
-      }, {
-        name: 'Misha',
-        last_name: 'Dedyrenko',
-        role: 'manager'
-      }],
-      name: null
+      users: []
     };
   },
-  methods: {
-    addUser: function addUser() {
-      this.users.push(this.name);
-      this.clearName();
-    },
-    clearName: function clearName() {
-      this.name = null;
-    }
+  mounted: function mounted() {
+    var _this = this;
+    axios.get('/users').then(function (result) {
+      _this.users = result.data;
+    });
   }
 });
 
@@ -4930,11 +4906,14 @@ __webpack_require__.r(__webpack_exports__);
   name: "UserPage",
   data: function data() {
     return {
-      userName: null
+      user: {}
     };
   },
   mounted: function mounted() {
-    this.userName = this.$route.params.name;
+    var _this = this;
+    axios.get('/users/' + this.$route.params.id).then(function (result) {
+      _this.user = result.data;
+    });
   }
 });
 
@@ -4988,9 +4967,9 @@ var render = function render() {
     _c = _vm._self._c;
   return _c("div", [_c("h2", {
     "class": _vm.getClass(_vm.user.role)
-  }, [_vm._v(_vm._s(_vm.user.name) + " " + _vm._s(_vm.user.last_name))]), _vm._v(" "), _c("p", [_vm._v(_vm._s(_vm.text))]), _vm._v(" "), _vm.user.role === "client" ? [_c("small", [_vm._v(_vm._s(_vm.user.role))])] : [_c("p", [_vm._v(_vm._s(_vm.user.role))])], _vm._v(" "), _c("router-link", {
+  }, [_vm._v(_vm._s(_vm.user.name))]), _vm._v(" "), _c("p", [_vm._v(_vm._s(_vm.text))]), _vm._v(" "), _vm.user.role === "client" ? [_c("small", [_vm._v(_vm._s(_vm.user.role))])] : [_c("p", [_vm._v(_vm._s(_vm.user.role))])], _vm._v(" "), _c("router-link", {
     attrs: {
-      to: "/users/" + _vm.user.name
+      to: "/users/" + _vm.user.id
     }
   }, [_vm._v("User's page")]), _vm._v("\n    " + _vm._s(_vm.user.name) + ">\n")], 2);
 };
@@ -5073,7 +5052,7 @@ __webpack_require__.r(__webpack_exports__);
 var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
-  return _c("div", [_c("h1", [_vm._v("User name: " + _vm._s(_vm.userName))])]);
+  return _c("div", [_c("h1", [_vm._v("User name: " + _vm._s(_vm.user.name))]), _vm._v(" "), _c("h1", [_vm._v("User name: " + _vm._s(_vm.user.email))])]);
 };
 var staticRenderFns = [];
 render._withStripped = true;
@@ -5169,7 +5148,7 @@ var routes = [{
   path: '/users',
   component: _pages_UserList_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
 }, {
-  path: '/users/:name',
+  path: '/users/:id',
   component: _pages_UserPage_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
 }, {
   path: '/admin',

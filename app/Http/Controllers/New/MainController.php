@@ -1,7 +1,9 @@
 <?php
+
 namespace App\Http\Controllers\New;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 
 class MainController extends Controller
 {
@@ -10,23 +12,18 @@ class MainController extends Controller
         return view('welcome');
     }
 
-    public function testPost()
+    public function users()
     {
-        return response()->json(['first_test' => 'ok'], 201);
+        return User::get()->map(function (User $user) {
+            return [
+              'id' => $user->id,
+              'name' => $user->name,
+              'role' => $user->role->name,
+            ];
+        });
     }
-
-    public function testPut()
-    {
-        return response()->json(['put' => 'ok']);
-    }
-
-    public function testAny()
-    {
-        return response()->json(['any_method' => 'ok']);
-    }
-
-    public function html()
-    {
-        return response('current string', 404);
-    }
+    public function user($id)
+        {
+            return User::find($id)->only('name', 'email');
+        }
 }
