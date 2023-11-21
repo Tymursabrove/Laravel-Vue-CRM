@@ -1,3 +1,5 @@
+This is a project for the general purpose CRM. 
+
 ### Brief instructions for installing and configuring the educational project
 * composer create-project laravel/laravel:^8.0 example-app
 * In file .env input value and setting database
